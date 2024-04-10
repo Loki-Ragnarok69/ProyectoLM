@@ -1,6 +1,6 @@
-.grid{
-    width: 300px;
-    height: 300px;
-    border: solid 1px black;
-    
+.caja {
+
+  width: 1000px;
+  height: 1000px;
+  border: solid 1px black;
 }
