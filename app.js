@@ -3,8 +3,10 @@ const caja= document.querySelector(".caja");
 
 /*Seleccionamos el numero que mostrara el resultado */
 const resultado= document.querySelector(".resultado");
+
 /*altura por la que multiplicamos para generar los divs que haran los cuadrados dentro de la caja */
 const width= 15;
+
 /*array de invasores eliminados */
 const invasoresEliminados=[];
 let indiceNaveActual=202;
@@ -13,16 +15,20 @@ for(let i=0; i<width*width; i++){
     const cuadrado= document.createElement("div");
     caja.appendChild(cuadrado);
 }
+
 /*Variable para seleccionar todos los cuadrados que hay dentro de la caja */
 const cuadrados = Array.from(document.querySelectorAll(".caja div"));
+
 /*muestra por consola los cuadrados que hay dentro de la caja */
 console.log(cuadrados);
+
 /*Array de los aliens*/
 const aliens=[
     0,1,2,3,4,5,6,7,8,9,
    15,16,17,18,19,20,21,22,23,24,
    30,31,32,33,34,35,36,37,38,39
 ]
+
 /*Añadir alien a los cuadrados si no esta dentro del array de eliminados*/
 function dibujar(){
     for(let i=0;i<aliens.length;i++){
@@ -31,6 +37,7 @@ function dibujar(){
         }
     }
 }
+
 /*Llamar a la funcion para dibujar los invasores*/
 dibujar();
 
@@ -49,5 +56,6 @@ switch(e.key){
         cuadrados[indiceNaveActual].classList.add("nave");
     }
 }
+
 document.addEventListener("keydown", moverNave);
 /*Minuto 25.50 video:  https://www.youtube.com/watch?v=s6LrpUTQQn0*/
