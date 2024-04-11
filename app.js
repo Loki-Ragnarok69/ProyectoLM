@@ -72,6 +72,17 @@ function eliminar(){
     }
 }
 
+/* Función para verificar si los invasores han alcanzado el fondo del área de juego */
+function invasoresAlFinal() {
+    for (let i = 0; i < aliens.length; i++) {
+        if (aliens[i] >= width * (width - 1)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 /*Funcoin de movimiento de los invasores */
 function moverInvasores(){
     const bordeIzquierdo= aliens[0] % width === 0;
@@ -100,12 +111,13 @@ function moverInvasores(){
 
     dibujar();
 
-    /*Si dentro del mismo cuadro esta nave e invasor, resultado pasa a poner game over y se detiene el movimiento */
-    if(cuadrados[indiceNaveActual].classList.contains("invasor")){
+    /*Detiene el juego y muestra "GAME OVER" si al menos un invasor llega al fondo del área de juego o un invasor toca la nave*/
+    if (invasoresAlFinal() || (cuadrados[indiceNaveActual].classList.contains("invasor"))) {
         resultadoPntalla.innerHTML = "GAME OVER";
-        juegoFinalizado=true;
+        juegoFinalizado = true;
         clearInterval(invasoresIndice);
     }
+
     /*Si todos los invasores son eliminados, se genera el has ganasdo */
     if(invasoresEliminados.length === aliens.length){
         resultadoPntalla.innerHTML="HAS GANADO";
