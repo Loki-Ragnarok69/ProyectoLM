@@ -19,22 +19,22 @@ background-color: black;
     height: 40px;
 }
 
-.invasor {
+.invasor{
     background-image: url("Img/allien.gif");
     background-size: cover;
 }
 
-.nave {
+.nave{
     background-image: url("Img/nave.png");
     background-size: cover;
 }
 
-.laser {
+.laser{
     background-image: url("Img/laser.jpg");
     background-size: cover;
 }
 
-.explosion {
+.explosion{
     background-image: url("Img/explosion.gif");
     background-size: cover;
 }
