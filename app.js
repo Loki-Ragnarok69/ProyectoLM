@@ -142,7 +142,7 @@ function disparo(e){
         laserId= setInterval(moverDisparo,100);
     }
 }
-
+/*Al presionar la tecla se llama a la funcion disparo */
 document.addEventListener("keydown", disparo);
 
 /*Funcion para mover la nave*/
@@ -164,9 +164,5 @@ switch(e.key){
     /*Añadimos la nave al nuevo valor */
     cuadrados[indiceNaveActual].classList.add("nave");
 }
-
+/*Al presionar la tecla se llama la funcion mover nave */
 document.addEventListener("keydown", moverNave);
-
-
-
-
