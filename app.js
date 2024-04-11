@@ -19,8 +19,10 @@ let invasoresIndice;
 /*variable movimiento a la derecha*/
 let movDerecho=true;
 
-
 let direccion=1;
+
+/*Puntuacion del jugador */
+let resultado=0;
 
 /* Creamos un for para añadir divs dentro de la caja donde se moveran*/
 for(let i=0; i<width*width; i++){
@@ -98,16 +100,50 @@ function moverInvasores(){
         clearInterval(invasoresIndice);
     }
     /*Si todos los invasores son eliminados, se genera el has ganasdo */
-    if(invasoresEliminados.length=== aliens.length){
-        resultadoPntalla="HAS GANADO";
-        clearInterval(moverInvasores);
+    if(invasoresEliminados.length === aliens.length){
+        resultadoPntalla.innerHTML="HAS GANADO";
+        clearInterval(invasoresIndice);
     }
 }
 
 /*Intervalo de movimiento de los invasores */
 invasoresIndice= setInterval(moverInvasores, 500);
 
-/*minuto 38.14, añadir disparo */
+/*Funcion para crear el disparo */
+function disparo(e){
+    let laserId;
+    let laserIndiceActual = indiceNaveActual;
+/*Funcion para dar movimiento al disparo */
+    function moverDisparo(){
+        cuadrados[laserIndiceActual].classList.remove("laser");
+        laserIndiceActual -= width;
+
+        cuadrados[laserIndiceActual].classList.add("laser");
+    /*Hacer que se elimine la clase invasor si coincide con laser y que aparezca la clase explosion  */
+        if(cuadrados[laserIndiceActual].classList.contains("invasor",)){
+            cuadrados[laserIndiceActual].classList.remove("invasor");
+            cuadrados[laserIndiceActual].classList.remove("laser");
+            cuadrados[laserIndiceActual].classList.add("explosion");
+
+            /*Añadir un intervalo de aparicion de la explosion */
+            setTimeout(()=> cuadrados[laserIndiceActual].classList.remove("explosion"), 300);
+            clearInterval(laserId);
+
+            const invasorEliminado = aliens.indexOf(laserIndiceActual);
+            invasoresEliminados.push(invasorEliminado);
+            resultado++;
+            resultadoPntalla.innerHTML=resultado;
+            console.log(invasoresEliminados);
+        }
+    }
+
+/*Si la tecla pulsada es espacio, empieza el intervalo del disparo */
+    if(e.key === " ") {
+        laserId= setInterval(moverDisparo,100);
+    }
+}
+
+document.addEventListener("keydown", disparo);
 
 /*Funcion para mover la nave*/
 function moverNave(e){
