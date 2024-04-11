@@ -20,21 +20,21 @@ background-color: black;
 }
 
 .invasor{
-    background-image: url("Img/allien.gif");
+    background-image: url("imagenes/allien.gif");
     background-size: cover;
 }
 
 .nave{
-    background-image: url("Img/nave.png");
+    background-image: url("imagenes/nave.png");
     background-size: cover;
 }
 
 .laser{
-    background-image: url("Img/laser.jpg");
+    background-image: url("imagenes/laser.jpg");
     background-size: cover;
 }
 
 .explosion{
-    background-image: url("Img/explosion.gif");
+    background-image: url("imagenes/explosion.gif");
     background-size: cover;
 }
