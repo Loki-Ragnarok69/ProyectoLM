@@ -159,10 +159,10 @@ function disparo(e){
                     const invasorEliminado = aliens.indexOf(laserIndiceActual);
                     invasoresEliminados.push(invasorEliminado);
                     resultado++;
-                    resultadoPntalla.innerHTML=resultado;
+                    resultadoPntalla.innerHTML = 'PUNTUACIÓN: ' + resultado;
                     console.log(invasoresEliminados);
                     /*Reestablece el disparo*/
-                    disparoActivo=false;
+                    disparoActivo = false;
             }
         }else {
             /* Eliminar el intervalo si el disparo sale del área del juego*/
