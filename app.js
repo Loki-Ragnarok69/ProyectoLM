@@ -116,9 +116,18 @@ function moverInvasores(){
         resultadoPntalla.innerHTML = "GAME OVER";
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
+
+        cuadrados[indiceNaveActual].classList.add("explosion");
+        setTimeout(()=> cuadrados[indiceNaveActual].classList.remove("explosion"), 300);
+
+        /* Si queremos que el invasor muera al chocar con la nave
+        cuadrados[indiceNaveActual].classList.remove("invasor");
+        */
+
+        cuadrados[indiceNaveActual].classList.remove("nave");
     }
 
-    /*Si todos los invasores son eliminados, se genera el has ganasdo */
+    /*Si todos los invasores son eliminados, se genera el has ganado */
     if(invasoresEliminados.length === aliens.length){
         resultadoPntalla.innerHTML="HAS GANADO";
         juegoFinalizado=true;
@@ -131,7 +140,7 @@ invasoresIndice= setInterval(moverInvasores, 400);
 
 /*Funcion para crear el disparo */
 function disparo(e){
-    /*Verificar si el jeugo a finalizado */
+    /*Verificar si el juego ha finalizado */
     if(juegoFinalizado || disparoActivo) return;
 
     let laserId;
