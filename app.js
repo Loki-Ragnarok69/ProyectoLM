@@ -30,6 +30,13 @@ let juegoFinalizado= false;
 /*Llevar el control del disparo */
 let disparoActivo= false;
 
+/*Sonidos de laser y explosion*/
+const laserAudio = document.getElementById("laser");
+const explosionAudio = document.getElementById("explosion");
+
+/*Disminuye el volumen de la explosion*/
+explosionAudio.volume = 0.3;
+
 /* Creamos un for para añadir divs dentro de la caja donde se moveran*/
 for(let i=0; i<width*width; i++){
     const cuadrado= document.createElement("div");
@@ -116,14 +123,14 @@ function moverInvasores(){
         resultadoPntalla.innerHTML = "GAME OVER";
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
+        explosionAudio.play();
 
+        /*Añadir animacion de explosion de la nave, con un temporizador*/
         cuadrados[indiceNaveActual].classList.add("explosion");
         setTimeout(()=> cuadrados[indiceNaveActual].classList.remove("explosion"), 300);
 
-        /* Si queremos que el invasor muera al chocar con la nave
+        /*Si queremos que el invasor muera al chocar con la nave, desaparecen los dos*/
         cuadrados[indiceNaveActual].classList.remove("invasor");
-        */
-
         cuadrados[indiceNaveActual].classList.remove("nave");
     }
 
@@ -164,6 +171,7 @@ function disparo(e){
             /*Añadir un intervalo de aparicion de la explosion */
                     setTimeout(()=> cuadrados[laserIndiceActual].classList.remove("explosion"), 300);
                     clearInterval(laserId);
+                    explosionAudio.play();
 
                     const invasorEliminado = aliens.indexOf(laserIndiceActual);
                     invasoresEliminados.push(invasorEliminado);
@@ -188,6 +196,7 @@ function disparo(e){
     if(e.key === " ") {
         disparoActivo=true;
         laserId= setInterval(moverDisparo,50);
+        laserAudio.play();
     }
 }
 
