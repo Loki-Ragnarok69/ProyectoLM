@@ -116,11 +116,15 @@ function disparo(e){
 /*Funcion para dar movimiento al disparo */
     function moverDisparo(){
         cuadrados[laserIndiceActual].classList.remove("laser");
-        laserIndiceActual -= width;
+        
+        /*Verificar si laserIndiceActual esta dentro de los limites del juego */
+        if(laserIndiceActual - width>=0){
+            laserIndiceActual -= width;
 
-        cuadrados[laserIndiceActual].classList.add("laser");
+            cuadrados[laserIndiceActual].classList.add("laser");
     /*Hacer que se elimine la clase invasor si coincide con laser y que aparezca la clase explosion  */
-        if(cuadrados[laserIndiceActual].classList.contains("invasor",)){
+        if(cuadrados[laserIndiceActual]){
+            if(cuadrados[laserIndiceActual].classList.contains("invasor",)){
             cuadrados[laserIndiceActual].classList.remove("invasor");
             cuadrados[laserIndiceActual].classList.remove("laser");
             cuadrados[laserIndiceActual].classList.add("explosion");
@@ -134,8 +138,13 @@ function disparo(e){
             resultado++;
             resultadoPntalla.innerHTML=resultado;
             console.log(invasoresEliminados);
+            }
+        }else {
+            /* Eliminar el intervalo si el disparo sale del área del juego*/
+            clearInterval(laserId);
         }
     }
+}
 
 /*Si la tecla pulsada es espacio, empieza el intervalo del disparo */
     if(e.key === " ") {
