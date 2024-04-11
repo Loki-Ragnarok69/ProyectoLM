@@ -24,6 +24,9 @@ let direccion=1;
 /*Puntuacion del jugador */
 let resultado=0;
 
+/*indicador para finalizar el juego */
+let juegoFinalizado= false;
+
 /* Creamos un for para añadir divs dentro de la caja donde se moveran*/
 for(let i=0; i<width*width; i++){
     const cuadrado= document.createElement("div");
@@ -84,7 +87,7 @@ function moverInvasores(){
     if(bordeIzquierdo &&!movDerecho){
         for(let i=0; i<aliens.length; i++){
             aliens[i] += width -1;
-            direccion=1,
+            direccion=1;
             movDerecho=true;
         }
     }
@@ -97,20 +100,25 @@ function moverInvasores(){
     /*Si dentro del mismo cuadro esta nave e invasor, resultado pasa a poner game over y se detiene el movimiento */
     if(cuadrados[indiceNaveActual].classList.contains("invasor")){
         resultadoPntalla.innerHTML = "GAME OVER";
+        juegoFinalizado=true;
         clearInterval(invasoresIndice);
     }
     /*Si todos los invasores son eliminados, se genera el has ganasdo */
     if(invasoresEliminados.length === aliens.length){
         resultadoPntalla.innerHTML="HAS GANADO";
+        juegoFinalizado=true;
         clearInterval(invasoresIndice);
     }
 }
 
 /*Intervalo de movimiento de los invasores */
-invasoresIndice= setInterval(moverInvasores, 500);
+invasoresIndice= setInterval(moverInvasores, 400);
 
 /*Funcion para crear el disparo */
 function disparo(e){
+    /*Verificar si el jeugo a finalizado */
+    if(juegoFinalizado) return;
+
     let laserId;
     let laserIndiceActual = indiceNaveActual;
 /*Funcion para dar movimiento al disparo */
@@ -145,17 +153,21 @@ function disparo(e){
         }
     }
 }
-
 /*Si la tecla pulsada es espacio, empieza el intervalo del disparo */
     if(e.key === " ") {
         laserId= setInterval(moverDisparo,100);
     }
 }
+
 /*Al presionar la tecla se llama a la funcion disparo */
 document.addEventListener("keydown", disparo);
 
 /*Funcion para mover la nave*/
 function moverNave(e){
+
+    /*Verificar si el juego a terminado */
+    if(juegoFinalizado) return;
+
     /*Eliminamos la nave del valor actual */
 cuadrados[indiceNaveActual].classList.remove("nave");
 switch(e.key){
