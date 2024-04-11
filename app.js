@@ -27,6 +27,9 @@ let resultado=0;
 /*indicador para finalizar el juego */
 let juegoFinalizado= false;
 
+/*Llevar el control del disparo */
+let disparoActivo= false;
+
 /* Creamos un for para añadir divs dentro de la caja donde se moveran*/
 for(let i=0; i<width*width; i++){
     const cuadrado= document.createElement("div");
@@ -117,7 +120,7 @@ invasoresIndice= setInterval(moverInvasores, 400);
 /*Funcion para crear el disparo */
 function disparo(e){
     /*Verificar si el jeugo a finalizado */
-    if(juegoFinalizado) return;
+    if(juegoFinalizado || disparoActivo) return;
 
     let laserId;
     let laserIndiceActual = indiceNaveActual;
@@ -128,34 +131,42 @@ function disparo(e){
         /*Verificar si laserIndiceActual esta dentro de los limites del juego */
         if(laserIndiceActual - width>=0){
             laserIndiceActual -= width;
-
             cuadrados[laserIndiceActual].classList.add("laser");
+            
     /*Hacer que se elimine la clase invasor si coincide con laser y que aparezca la clase explosion  */
-        if(cuadrados[laserIndiceActual]){
-            if(cuadrados[laserIndiceActual].classList.contains("invasor",)){
-            cuadrados[laserIndiceActual].classList.remove("invasor");
-            cuadrados[laserIndiceActual].classList.remove("laser");
-            cuadrados[laserIndiceActual].classList.add("explosion");
+            if(cuadrados[laserIndiceActual]){
+                if(cuadrados[laserIndiceActual].classList.contains("invasor",)){
+                    cuadrados[laserIndiceActual].classList.remove("invasor");
+                    cuadrados[laserIndiceActual].classList.remove("laser");
+                    cuadrados[laserIndiceActual].classList.add("explosion");
 
             /*Añadir un intervalo de aparicion de la explosion */
-            setTimeout(()=> cuadrados[laserIndiceActual].classList.remove("explosion"), 300);
-            clearInterval(laserId);
+                    setTimeout(()=> cuadrados[laserIndiceActual].classList.remove("explosion"), 300);
+                    clearInterval(laserId);
 
-            const invasorEliminado = aliens.indexOf(laserIndiceActual);
-            invasoresEliminados.push(invasorEliminado);
-            resultado++;
-            resultadoPntalla.innerHTML=resultado;
-            console.log(invasoresEliminados);
+                    const invasorEliminado = aliens.indexOf(laserIndiceActual);
+                    invasoresEliminados.push(invasorEliminado);
+                    resultado++;
+                    resultadoPntalla.innerHTML=resultado;
+                    console.log(invasoresEliminados);
+                    /*Reestablece el disparo*/
+                    disparoActivo=false;
             }
         }else {
             /* Eliminar el intervalo si el disparo sale del área del juego*/
             clearInterval(laserId);
+            disparoActivo= false;
         }
+        /*Else para establecerlo a false de nuevo para disparar cuando no hay colision */
+    }else{
+        clearInterval(laserId);
+        disparoActivo = false;
     }
 }
 /*Si la tecla pulsada es espacio, empieza el intervalo del disparo */
     if(e.key === " ") {
-        laserId= setInterval(moverDisparo,100);
+        disparoActivo=true;
+        laserId= setInterval(moverDisparo,50);
     }
 }
 
