@@ -65,7 +65,7 @@ background-image: url(imagenes/fondo.gif);
     background-size: cover;
 }
 h1{
-    font-family: 
+    font-family: "Press Start 2P", system-ui;
     color: rgb(255, 217, 0);
     display: flex;
   flex-wrap: wrap;
