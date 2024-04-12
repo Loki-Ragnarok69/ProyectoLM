@@ -2,7 +2,6 @@ body{
     background-color: gray;
 }
 .borde{
-    background-color: aqua;
     width: 900px;
     height: 900px;
     background-repeat: no-repeat;
@@ -13,6 +12,10 @@ body{
   align-items: center;
   margin: auto;
 
+}
+.titulo{
+    background-color: gray;
+    width: 300px;
 }
 
 /* Por si queremos poner la puntuacion justo en el medio */
