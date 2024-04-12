@@ -1,5 +1,18 @@
-html{
+body{
     background-color: gray;
+}
+.borde{
+    background-color: aqua;
+    width: 900px;
+    height: 900px;
+    background-repeat: no-repeat;
+    background-size: 900px;
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
 }
 
 /* Por si queremos poner la puntuacion justo en el medio */
@@ -47,4 +60,12 @@ background-image: url(imagenes/fondo.gif);
 .explosion{
     background-image: url("imagenes/explosion.gif");
     background-size: cover;
+}
+h1{
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
 }
