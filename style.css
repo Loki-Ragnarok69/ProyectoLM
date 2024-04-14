@@ -1,21 +1,31 @@
 body{
     background-image: url(imagenes/fondo-body.png);
+    display: flex;
+    flex-direction: column;
+
+
 }
+
+.direccion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .borde{
     background-image: url(imagenes/fondo.borde.jpg);
     width: 900px;
     height: 900px;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: auto;
-
 }
 .titulo{
     width: 300px;
+    
 }
 
 /* Por si queremos poner la puntuacion justo en el medio */
@@ -38,6 +48,7 @@ background-image: url(imagenes/fondo.gif);
   justify-content: center;
   align-items: center;
   margin: auto;
+  margin-top: 0;
 }
 
 .caja div{
@@ -73,4 +84,30 @@ h1{
   align-items: center;
   margin: auto;
 
+}
+
+.caratula_izquierda{
+    background-image: url("imagenes/caratula_izquierda.png");
+    flex-wrap:wrap;
+  width: 300px;
+  height: 900px;
+
+}
+
+.caratula_derecha{
+    background-image: url("imagenes/caratula_izquierda.png");
+    flex-wrap:wrap;
+  justify-content: right;
+  width: 300px;
+  height: 900px;
+ 
+}
+
+.resultado{
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    display: inline-block;
+  flex-wrap:wrap;
+  flex-direction: row;
 }

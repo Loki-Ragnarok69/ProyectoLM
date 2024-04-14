@@ -82,7 +82,7 @@ function eliminar(){
 /* Función para verificar si los invasores han alcanzado el fondo del área de juego */
 function invasoresAlFinal() {
     for (let i = 0; i < aliens.length; i++) {
-        if (aliens[i] >= width * (width - 1)) {
+        if (aliens[i] >= width * (width)) {
             return true;
         }
     }
@@ -90,7 +90,7 @@ function invasoresAlFinal() {
 }
 
 
-/*Funcoin de movimiento de los invasores */
+/*Funcion de movimiento de los invasores */
 function moverInvasores(){
     const bordeIzquierdo= aliens[0] % width === 0;
     const bordeDerecho= aliens[aliens.length -1] % width === width -1;
