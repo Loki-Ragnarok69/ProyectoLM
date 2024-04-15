@@ -2,6 +2,8 @@ body {
   background-image: url(imagenes/fondo-body.png);
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .direccion {
