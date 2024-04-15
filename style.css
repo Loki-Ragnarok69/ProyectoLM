@@ -1,31 +1,32 @@
-body{
-    background-image: url(imagenes/fondo-body.png);
-    display: flex;
-    flex-direction: column;
+body {
+  background-image: url(imagenes/fondo-body.png);
+  display: flex;
+  flex-direction: column;
 
 
 }
 
-.direccion{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.direccion {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.borde{
-    background-image: url(imagenes/fondo.borde.jpg);
-    width: 900px;
-    height: 900px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
+.borde {
+  background-image: url(imagenes/fondo.borde.jpg);
+  width: 900px;
+  height: 900px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-.titulo{
-    width: 300px;
-    
+
+.titulo {
+  width: 300px;
+
 }
 
 /* Por si queremos poner la puntuacion justo en el medio */
@@ -39,7 +40,7 @@ body{
 } */
 
 .caja {
-background-image: url(imagenes/fondo.gif);
+  background-image: url(imagenes/fondo.gif);
   width: 600px;
   height: 600px;
   border: solid 2px blueviolet;
@@ -51,34 +52,35 @@ background-image: url(imagenes/fondo.gif);
   margin-top: 0;
 }
 
-.caja div{
-    width: 40px;
-    height: 40px;
+.caja div {
+  width: 40px;
+  height: 40px;
 }
 
-.invasor{
-    background-image: url("imagenes/allien.gif");
-    background-size: cover;
+.invasor {
+  background-image: url("imagenes/allien.gif");
+  background-size: cover;
 }
 
-.nave{
-    background-image: url("imagenes/nave.png");
-    background-size: cover;
+.nave {
+  background-image: url("imagenes/nave.png");
+  background-size: cover;
 }
 
-.laser{
-    background-image: url("imagenes/laser.jpg");
-    background-size: cover;
+.laser {
+  background-image: url("imagenes/laser.jpg");
+  background-size: cover;
 }
 
-.explosion{
-    background-image: url("imagenes/explosion.gif");
-    background-size: cover;
+.explosion {
+  background-image: url("imagenes/explosion.gif");
+  background-size: cover;
 }
-h1{
-    font-family: "Press Start 2P", system-ui;
-    color: rgb(255, 217, 0);
-    display: flex;
+
+h1 {
+  font-family: "Press Start 2P", system-ui;
+  color: rgb(255, 217, 0);
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -86,28 +88,39 @@ h1{
 
 }
 
-.caratula_izquierda{
-    background-image: url("imagenes/caratula_izquierda.png");
-    flex-wrap:wrap;
+.caratula_izquierda {
+  background-image: url("imagenes/caratula.jpg");
+  flex-wrap: wrap;
   width: 300px;
   height: 900px;
 
 }
 
-.caratula_derecha{
-    background-image: url("imagenes/caratula_izquierda.png");
-    flex-wrap:wrap;
+.caratula_derecha {
+  background-image: url("imagenes/caratula.jpg");
+  flex-wrap: wrap;
   justify-content: right;
   width: 300px;
   height: 900px;
- 
+
 }
 
-.resultado{
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    display: inline-block;
-  flex-wrap:wrap;
+.resultado {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  display: inline-block;
+  flex-wrap: wrap;
   flex-direction: row;
+}
+
+.derrota {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  z-index: 1;
+}
+
+.oculto{
+  display: none;
 }
