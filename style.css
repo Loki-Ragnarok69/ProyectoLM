@@ -2,8 +2,6 @@ body {
   background-image: url(imagenes/fondo-body.png);
   display: flex;
   flex-direction: column;
-
-
 }
 
 .direccion {
@@ -22,11 +20,11 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
 .titulo {
   width: 300px;
-
 }
 
 /* Por si queremos poner la puntuacion justo en el medio */
@@ -93,7 +91,7 @@ h1 {
   flex-wrap: wrap;
   width: 300px;
   height: 900px;
-
+  margin-top: 10px;
 }
 
 .caratula_derecha {
@@ -102,6 +100,7 @@ h1 {
   justify-content: right;
   width: 300px;
   height: 900px;
+  margin-top: 10px;
 
 }
 
@@ -112,6 +111,7 @@ h1 {
   display: inline-block;
   flex-wrap: wrap;
   flex-direction: row;
+  margin-top: 5px;
 }
 
 .derrota {
