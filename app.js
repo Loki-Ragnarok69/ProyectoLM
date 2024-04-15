@@ -32,9 +32,12 @@ let juegoFinalizado = false;
 /*Llevar el control del disparo */
 let disparoActivo = false;
 
-/*Sonidos de laser y explosion*/
+/*Sonidos de laser, explosion, game over y victoria*/
 const laserAudio = document.getElementById("laser");
 const explosionAudio = document.getElementById("explosion");
+const game_over_audio = document.getElementById("game_over");
+const victoria_audio = document.getElementById("victoria");
+
 
 /*Disminuye el volumen de la explosion*/
 explosionAudio.volume = 0.3;
@@ -125,6 +128,7 @@ function moverInvasores() {
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
         explosionAudio.play();
+        game_over_audio.play();
 
 
         /*Añadir animacion de explosion de la nave, con un temporizador*/
@@ -146,6 +150,7 @@ function moverInvasores() {
         resultadoPntalla.innerHTML = "HAS GANADO";
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
+        victoria_audio.play();
     }
 }
 
