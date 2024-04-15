@@ -1,3 +1,5 @@
+"use strict"
+
 /*Selecccionamos la caja */
 const caja = document.querySelector(".caja");
 
@@ -148,7 +150,7 @@ function moverInvasores() {
 }
 
 /*Intervalo de movimiento de los invasores */
-invasoresIndice = setInterval(moverInvasores, 40);
+invasoresIndice = setInterval(moverInvasores, 400);
 
 /*Funcion para crear el disparo */
 function disparo(e) {
