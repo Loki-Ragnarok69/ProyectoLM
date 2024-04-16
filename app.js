@@ -162,7 +162,7 @@ function moverInvasores() {
 }
 
 /*Intervalo de movimiento de los invasores */
-invasoresIndice = setInterval(moverInvasores, 400);
+invasoresIndice = setInterval(moverInvasores, 20);
 
 /*Funcion para crear el disparo */
 function disparo(e) {
