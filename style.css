@@ -125,3 +125,20 @@ h1 {
 .oculto{
   display: none;
 }
+
+.volver{
+  display: none;
+}
+.boton{
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 35%;
+  display: inline-block;
+  background-color: rgba(96, 0, 187, 0.228);
+  border: 1px;
+
+  font-family: "Press Start 2P", system-ui;
+  color: rgb(255, 217, 0);
+}

@@ -38,6 +38,9 @@ const explosionAudio = document.getElementById("explosion");
 const game_over_audio = document.getElementById("game_over");
 const victoria_audio = document.getElementById("victoria");
 
+/*Boton de volver a juagar */
+const volver=document.querySelector(".volver");
+
 
 /*Disminuye el volumen de la explosion*/
 explosionAudio.volume = 0.3;
@@ -143,6 +146,8 @@ function moverInvasores() {
         const imagenGameOver = document.getElementById('perdiste');
         imagenGameOver.classList.remove('oculto');
         imagenGameOver.classList.add('derrota');
+        volver.classList.remove("volver");
+        volver.classList.add("boton");
     }
 
     /*Si todos los invasores son eliminados, se genera el has ganado */
@@ -151,6 +156,8 @@ function moverInvasores() {
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
         victoria_audio.play();
+        volver.classList.remove("volver");
+        volver.classList.add("boton");
     }
 }
 
@@ -240,3 +247,7 @@ function moverNave(e) {
 }
 /*Al presionar la tecla se llama la funcion mover nave */
 document.addEventListener("keydown", moverNave);
+
+volver.addEventListener('click', ()=>{
+    location.reload();
+})
