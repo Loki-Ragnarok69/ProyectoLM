@@ -38,6 +38,9 @@ const explosionAudio = document.getElementById("explosion");
 const game_over_audio = document.getElementById("game_over");
 const victoria_audio = document.getElementById("victoria");
 
+/*Pedir al usuario el nombre */
+let nombre= prompt("Introduce tu nombre para guardar junto tu puntuacion");
+
 /*Boton de volver a juagar */
 const volver=document.querySelector(".volver");
 
@@ -162,7 +165,7 @@ function moverInvasores() {
 }
 
 /*Intervalo de movimiento de los invasores */
-invasoresIndice = setInterval(moverInvasores, 20);
+invasoresIndice = setInterval(moverInvasores, 400);
 
 /*Funcion para crear el disparo */
 function disparo(e) {
@@ -251,3 +254,17 @@ document.addEventListener("keydown", moverNave);
 volver.addEventListener('click', ()=>{
     location.reload();
 })
+/*funcion para guardar los datos del jugador */
+function guardarDatos(resultado, nombre){
+    /*obtener los datos de jugadores existentes */
+    let jugadores= JSON.parse(localStorage.getItem('jugadores')) || [];
+
+    /*Agregar jugador nuevo */
+    jugadores.push({nombre, resultado});
+    
+    /*guardar los datos actualizados en el localstorage */
+    localStorage.setItem('jugadores',JSON.stringify(jugadores));
+}
+
+/*llamada a la funcion */
+guardarDatos();
