@@ -165,7 +165,7 @@ function moverInvasores() {
 }
 
 /*Intervalo de movimiento de los invasores */
-invasoresIndice = setInterval(moverInvasores, 400);
+invasoresIndice = setInterval(moverInvasores, 600);
 
 /*Funcion para crear el disparo */
 function disparo(e) {
@@ -254,6 +254,8 @@ document.addEventListener("keydown", moverNave);
 volver.addEventListener('click', ()=>{
     location.reload();
 })
+
+
 /*funcion para guardar los datos del jugador */
 function guardarDatos(resultado, nombre){
     /*obtener los datos de jugadores existentes */
