@@ -43,6 +43,7 @@ let nombre= prompt("Introduce tu nombre para guardar junto tu puntuacion");
 
 /*Boton de volver a juagar */
 const volver=document.querySelector(".volver");
+const siguiente=document.querySelector(".siguiente");
 
 
 /*Disminuye el volumen de la explosion*/
@@ -159,8 +160,8 @@ function moverInvasores() {
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
         victoria_audio.play();
-        volver.classList.remove("volver");
-        volver.classList.add("boton");
+        siguiente.classList.remove("volver");
+        siguiente.classList.add("boton");
     }
 }
 
