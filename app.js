@@ -1,17 +1,5 @@
 "use strict";
-const modos =
-{
-    "niveles":[
-        {
-            "numero": 1,
-            "velocidad":400
-        },
-        {
-            "numero": 2,
-            "velocidad":600
-        }
-    ]
-}
+
 
 /* Selecccionamos la caja */
 const caja = document.querySelector(".caja");
