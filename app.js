@@ -1,6 +1,7 @@
 "use strict";
 
 
+
 /* Selecccionamos la caja */
 const caja = document.querySelector(".caja");
 
