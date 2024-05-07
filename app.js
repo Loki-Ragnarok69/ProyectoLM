@@ -43,8 +43,6 @@ const explosionAudio = document.getElementById("explosion");
 const game_over_audio = document.getElementById("game_over");
 const victoria_audio = document.getElementById("victoria");
 
-/* Pedir al usuario el nombre */
-let nombre = prompt("Introduce tu nombre para guardar junto tu puntuacion");
 
 /* Boton de volver a jugar */
 const volver = document.querySelector(".volver");
