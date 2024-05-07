@@ -1,6 +1,5 @@
 "use strict";
 
-
 /* Selecccionamos la caja */
 const caja = document.querySelector(".caja");
 
@@ -42,7 +41,6 @@ const laserAudio = document.getElementById("laser");
 const explosionAudio = document.getElementById("explosion");
 const game_over_audio = document.getElementById("game_over");
 const victoria_audio = document.getElementById("victoria");
-
 
 /* Boton de volver a jugar */
 const volver = document.querySelector(".volver");
@@ -128,7 +126,12 @@ function moverInvasores() {
 
     dibujar();
 
-    /* Detiene el juego y muestra "GAME OVER" si al menos un invasor llega al fondo del área de juego o un invasor toca la nave */
+    /* Disparo aleatorio de los invasores */
+    if (Math.random() < 0.05) {
+        disparoInvasor();
+    }
+
+    /* Detiene el juego y muestra "GAME OVER" si al menos un invasor llega al fondo del área de juego,  un invasor toca la nave  o un invasor llega a la zona donde esta la nave*/
     if (invasoresAlFinal() || cuadrados[indiceNaveActual].classList.contains("invasor")) {
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
@@ -223,6 +226,52 @@ function disparo(e) {
     }
 }
 
+/* Función para que los invasores disparen aleatoriamente */
+function disparoInvasor() {
+    // Elegir un invasor aleatorio que no esté eliminado
+    const invasorIndex = Math.floor(Math.random() * aliens.length);
+    if (!invasoresEliminados.includes(invasorIndex)) {
+        let disparoIndiceActual = aliens[invasorIndex];
+        let disparoId;
+
+        function moverDisparo() {
+            cuadrados[disparoIndiceActual].classList.remove("laser");
+
+            // Verificar si el disparo está dentro de los límites del juego
+            if (disparoIndiceActual + width < width * width) {
+                disparoIndiceActual += width;
+                cuadrados[disparoIndiceActual].classList.add("laser");
+
+                // Si el disparo alcanza la nave del jugador
+                if (cuadrados[disparoIndiceActual].classList.contains("nave")) {
+                    juegoFinalizado = true;
+                    clearInterval(disparoId);
+                    explosionAudio.play();
+                    game_over_audio.play();
+
+                    // Mostrar animación de explosión
+                    cuadrados[indiceNaveActual].classList.add("explosion");
+                    setTimeout(() => cuadrados[indiceNaveActual].classList.remove("explosion"), 300);
+
+                    // Eliminar la nave y mostrar GAME OVER
+                    cuadrados[indiceNaveActual].classList.remove("nave");
+                    const imagenGameOver = document.getElementById('perdiste');
+                    imagenGameOver.classList.remove('oculto');
+                    imagenGameOver.classList.add('derrota');
+                    volver.classList.remove("volver");
+                    volver.classList.add("boton");
+                }
+            } else {
+                // Eliminar el intervalo si el disparo sale del área del juego
+                clearInterval(disparoId);
+            }
+        }
+
+        // Iniciar el intervalo de disparo
+        disparoId = setInterval(moverDisparo, 100);
+    }
+}
+
 /* Al presionar la tecla se llama a la funcion disparo */
 document.addEventListener("keydown", disparo);
 
@@ -303,5 +352,4 @@ function reiniciarJuego() {
     siguiente.classList.add("oculto");
 }
 siguiente.addEventListener('click', siguienteNivel);
-
 
