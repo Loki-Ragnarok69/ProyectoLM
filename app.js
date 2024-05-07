@@ -90,9 +90,11 @@ function eliminar() {
 }
 
 /* Función para verificar si los invasores han alcanzado el fondo del área de juego */
+
 function invasoresAlFinal() {
     for (let i = 0; i < aliens.length; i++) {
-        if (aliens[i] >= width * (width)) {
+        // Si el índice del invasor está dentro del rango de 195 a 204 y aún no ha sido eliminado, finaliza el juego
+        if (aliens[i] >= 195 && aliens[i] <= 204 && !invasoresEliminados.includes(i)) {
             return true;
         }
     }
