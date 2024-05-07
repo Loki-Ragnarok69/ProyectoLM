@@ -1,14 +1,14 @@
 'use strict'
 const modos =
 {
-    "nivel1":[
+    "niveles":[
         {
-            "velocidad":600,
+            "numero": 1,
+            "velocidad":400
         },
-    ],
-    "nivel2":[
         {
-           "velocidad":400,
-        },
-    ],
+            "numero": 2,
+            "velocidad":600
+        }
+    ]
 }
