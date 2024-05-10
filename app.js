@@ -326,6 +326,9 @@ function reiniciarJuego() {
     resultado = puntuacionActual;
     resultadoPntalla.innerHTML = "Puntuacion: " + resultado;
 
+       // Guardar las posiciones actuales de los invasores
+       const posicionesIniciales = aliens.slice(0);
+       
     /* Limpiar los invasores eliminados y reiniciar el juego */
     invasoresEliminados.length = 0;
     juegoFinalizado = false;
@@ -333,15 +336,20 @@ function reiniciarJuego() {
 
     /* Eliminar los cuadrados de la nave y los invasores */
     cuadrados[indiceNaveActual].classList.remove("nave");
-    for (let i = 0; i < aliens.length; i++) {
-        cuadrados[aliens[i]].classList.remove("invasor");
-    }
-
-    /* Reiniciar la posicion de la nave y los invasores */
-    indiceNaveActual = 202;
     aliens.forEach(alien => {
         cuadrados[alien].classList.remove("invasor");
     });
+
+  // Reiniciar la posición de la nave
+  indiceNaveActual = 202;
+
+  // Reiniciar la posición de los invasores a las posiciones originales
+  aliens.splice(0, aliens.length); // Vaciar el arreglo
+    for (let i = 0; i < 9; i++) { // Colocar 9 invasores en las tres primeras filas
+        aliens.push(i);
+        aliens.push(i + width);
+        aliens.push(i + width * 2);
+    }
 
     dibujar();
     cuadrados[indiceNaveActual].classList.add("nave");
@@ -352,6 +360,7 @@ function reiniciarJuego() {
 
     /* Ocultar el botón de siguiente nivel */
     siguiente.classList.add("oculto");
+    
 }
 siguiente.addEventListener('click', siguienteNivel);
 
