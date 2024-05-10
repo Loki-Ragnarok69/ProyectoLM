@@ -127,14 +127,15 @@ h1 {
   z-index: 1;
 }
 
-.oculto{
+.oculto {
   display: none;
 }
 
-.volver{
+.volver {
   display: none;
 }
-.boton{
+
+.boton {
   width: 100px;
   height: 50px;
   position: absolute;
