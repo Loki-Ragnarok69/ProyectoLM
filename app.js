@@ -317,6 +317,11 @@ function siguienteNivel() {
 
     /* Reiniciar el juego */
     reiniciarJuego();
+    game_over_audio.pause(); // Para pausar la reproducción
+    game_over_audio.currentTime = 0; // Para reiniciar el tiempo de reproducción
+    
+    victoria_audio.pause(); // Para pausar la reproducción
+    victoria_audio.currentTime = 0; // Para reiniciar el tiempo de reproducción
 }
 
 function reiniciarJuego() {

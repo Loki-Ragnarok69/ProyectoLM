@@ -135,7 +135,7 @@ h1 {
   display: none;
 }
 .boton{
-  width: 100px;
+  width: 150px;
   height: 50px;
   position: absolute;
   z-index: 1;
@@ -150,4 +150,6 @@ h1 {
 
 button:hover {
   background-color: #0056b3;
+  width: 150px;
+  height: 50px;
 }
