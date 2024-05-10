@@ -71,6 +71,11 @@ body {
   background-size: cover;
 }
 
+.laser_enemigo {
+  background-image: url("imagenes/laser-enemigo.png");
+  background-size: cover;
+}
+
 .explosion {
   background-image: url("imagenes/explosion.gif");
   background-size: cover;

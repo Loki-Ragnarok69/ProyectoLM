@@ -237,12 +237,12 @@ function disparoInvasor() {
         let disparoId;
 
         function moverDisparo() {
-            cuadrados[disparoIndiceActual].classList.remove("laser");
+            cuadrados[disparoIndiceActual].classList.remove("laser_enemigo");
 
             // Verificar si el disparo está dentro de los límites del juego
             if (disparoIndiceActual + width < width * width) {
                 disparoIndiceActual += width;
-                cuadrados[disparoIndiceActual].classList.add("laser");
+                cuadrados[disparoIndiceActual].classList.add("laser_enemigo");
 
                 // Si el disparo alcanza la nave del jugador
                 if (cuadrados[disparoIndiceActual].classList.contains("nave")) {
@@ -361,8 +361,8 @@ function reiniciarJuego() {
             return true;
         }
     }
-    
 }
 siguiente.classList.add("oculto");
 siguiente.addEventListener('click', siguienteNivel);
+
 
