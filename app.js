@@ -320,6 +320,8 @@ function siguienteNivel() {
 }
 
 function reiniciarJuego() {
+    victoria_audio.currentTime = 0; // Reinicia la música al principio
+    victoria_audio.pause();
 
     /* Reiniciar la puntuacion */
     resultado = puntuacionActual;
@@ -363,6 +365,7 @@ function reiniciarJuego() {
     }
 }
 siguiente.classList.add("oculto");
+
 siguiente.addEventListener('click', siguienteNivel);
 
 
