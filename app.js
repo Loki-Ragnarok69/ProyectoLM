@@ -129,7 +129,7 @@ function moverInvasores() {
     dibujar();
 
     /* Disparo aleatorio de los invasores */
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.25) {
         disparoInvasor();
     }
 
@@ -311,10 +311,9 @@ function siguienteNivel() {
     // Incrementar el nivel
     let nivelActual = modos["niveles"].findIndex(nivel => nivel.velocidad === velNiv);
     nivelActual++; // Incrementamos al siguiente nivel
-    if (nivelActual >= modos["niveles"].length) {
-        nivelActual = 0; // Si supera el máximo, vuelve al primer nivel
-    }
+   
     velNiv = modos["niveles"][nivelActual]["velocidad"];
+
 
     /* Reiniciar el juego */
     reiniciarJuego();
@@ -326,9 +325,6 @@ function reiniciarJuego() {
     resultado = puntuacionActual;
     resultadoPntalla.innerHTML = "Puntuacion: " + resultado;
 
-       // Guardar las posiciones actuales de los invasores
-       const posicionesIniciales = aliens.slice(0);
-       
     /* Limpiar los invasores eliminados y reiniciar el juego */
     invasoresEliminados.length = 0;
     juegoFinalizado = false;
@@ -343,6 +339,7 @@ function reiniciarJuego() {
   // Reiniciar la posición de la nave
   indiceNaveActual = 202;
 
+
   // Reiniciar la posición de los invasores a las posiciones originales
   aliens.splice(0, aliens.length); // Vaciar el arreglo
     for (let i = 0; i < 9; i++) { // Colocar 9 invasores en las tres primeras filas
@@ -351,16 +348,21 @@ function reiniciarJuego() {
         aliens.push(i + width * 2);
     }
 
-    dibujar();
+
     cuadrados[indiceNaveActual].classList.add("nave");
 
     /* Reiniciar el intervalo de movimiento de los invasores */
     clearInterval(invasoresIndice);
-    invasoresIndice = setInterval(moverInvasores, velNiv);
+    invasoresIndice = setInterval(moverInvasores, velNiv);   
 
-    /* Ocultar el botón de siguiente nivel */
-    siguiente.classList.add("oculto");
+    for (let i = 0; i < aliens.length; i++) {
+        // Si el índice del invasor está dentro del rango de 195 a 204 y aún no ha sido eliminado, finaliza el juego
+        if (aliens[i] >= 195 && aliens[i] <= 204 && !invasoresEliminados.includes(i)) {
+            return true;
+        }
+    }
     
 }
+siguiente.classList.add("oculto");
 siguiente.addEventListener('click', siguienteNivel);
 
