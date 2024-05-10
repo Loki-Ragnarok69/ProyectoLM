@@ -311,7 +311,7 @@ function siguienteNivel() {
     // Incrementar el nivel
     let nivelActual = modos["niveles"].findIndex(nivel => nivel.velocidad === velNiv);
     nivelActual++; // Incrementamos al siguiente nivel
-   
+
     velNiv = modos["niveles"][nivelActual]["velocidad"];
 
 
@@ -325,6 +325,8 @@ function siguienteNivel() {
 }
 
 function reiniciarJuego() {
+    victoria_audio.currentTime = 0; // Reinicia la música al principio
+    victoria_audio.pause();
 
     /* Reiniciar la puntuacion */
     resultado = puntuacionActual;
@@ -341,12 +343,12 @@ function reiniciarJuego() {
         cuadrados[alien].classList.remove("invasor");
     });
 
-  // Reiniciar la posición de la nave
-  indiceNaveActual = 202;
+    // Reiniciar la posición de la nave
+    indiceNaveActual = 202;
 
 
-  // Reiniciar la posición de los invasores a las posiciones originales
-  aliens.splice(0, aliens.length); // Vaciar el arreglo
+    // Reiniciar la posición de los invasores a las posiciones originales
+    aliens.splice(0, aliens.length); // Vaciar el arreglo
     for (let i = 0; i < 9; i++) { // Colocar 9 invasores en las tres primeras filas
         aliens.push(i);
         aliens.push(i + width);
@@ -358,7 +360,7 @@ function reiniciarJuego() {
 
     /* Reiniciar el intervalo de movimiento de los invasores */
     clearInterval(invasoresIndice);
-    invasoresIndice = setInterval(moverInvasores, velNiv);   
+    invasoresIndice = setInterval(moverInvasores, velNiv);
 
     for (let i = 0; i < aliens.length; i++) {
         // Si el índice del invasor está dentro del rango de 195 a 204 y aún no ha sido eliminado, finaliza el juego
@@ -368,6 +370,7 @@ function reiniciarJuego() {
     }
 }
 siguiente.classList.add("oculto");
+
 siguiente.addEventListener('click', siguienteNivel);
 
 
