@@ -153,3 +153,7 @@ button:hover {
   width: 150px;
   height: 50px;
 }
+
+.siguiente_oculto {
+  display: none;
+}

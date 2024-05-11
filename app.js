@@ -45,7 +45,7 @@ const victoria_audio = document.getElementById("victoria");
 /* Boton de volver a jugar */
 const volver = document.querySelector(".volver");
 const siguiente = document.querySelector(".siguiente");
-siguiente.classList.add("oculto");
+siguiente.classList.add("siguiente_oculto");
 
 /* Disminuye el volumen de la explosion */
 explosionAudio.volume = 0.3;
@@ -162,9 +162,10 @@ function moverInvasores() {
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
         victoria_audio.play();
-        siguiente.classList.remove("oculto");
+        
         siguiente.classList.remove("volver");
         siguiente.classList.add("boton");
+        siguiente.classList.remove("siguiente_oculto");
         puntuacionActual = resultado;
     }
 }
@@ -246,6 +247,7 @@ function disparoInvasor() {
 
                 // Si el disparo alcanza la nave del jugador
                 if (cuadrados[disparoIndiceActual].classList.contains("nave")) {
+                    clearInterval(invasoresIndice);
                     juegoFinalizado = true;
                     clearInterval(disparoId);
                     explosionAudio.play();
@@ -308,15 +310,26 @@ volver.addEventListener('click', () => {
 });
 
 function siguienteNivel() {
+    siguiente.classList.add("siguiente_oculto");
     // Incrementar el nivel
     let nivelActual = modos["niveles"].findIndex(nivel => nivel.velocidad === velNiv);
+
+    
+    // Si alcanzas el segundo nivel, oculta el botón de siguiente nivel
+    if (nivelActual === 2) {
+        siguiente.classList.add('siguiente_oculto');
+    }
+
+
     nivelActual++; // Incrementamos al siguiente nivel
 
     velNiv = modos["niveles"][nivelActual]["velocidad"];
 
+    
 
     /* Reiniciar el juego */
     reiniciarJuego();
+
     game_over_audio.pause(); // Para pausar la reproducción
     game_over_audio.currentTime = 0; // Para reiniciar el tiempo de reproducción
     
@@ -369,8 +382,6 @@ function reiniciarJuego() {
         }
     }
 }
-siguiente.classList.add("oculto");
-
 siguiente.addEventListener('click', siguienteNivel);
 
 
