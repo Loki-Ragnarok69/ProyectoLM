@@ -68,12 +68,12 @@ body {
 
 .laser {
   background-image: url("imagenes/laser.jpg");
-  background-size: cover;
+  background-size: 50px;
 }
 
 .laser_enemigo {
   background-image: url("imagenes/laser-enemigo.png");
-  background-size: cover;
+  background-size: 50px;
 }
 
 .explosion {

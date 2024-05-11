@@ -41,6 +41,7 @@ const laserAudio = document.getElementById("laser");
 const explosionAudio = document.getElementById("explosion");
 const game_over_audio = document.getElementById("game_over");
 const victoria_audio = document.getElementById("victoria");
+const laserEnemigoAudio = document.getElementById("laser_enemigo");
 
 /* Boton de volver a jugar */
 const volver = document.querySelector(".volver");
@@ -129,7 +130,7 @@ function moverInvasores() {
     dibujar();
 
     /* Disparo aleatorio de los invasores */
-    if (Math.random() < 0.25) {
+    if (Math.random() < 0.45) {
         disparoInvasor();
     }
 
@@ -237,13 +238,14 @@ function disparoInvasor() {
         let disparoIndiceActual = aliens[invasorIndex];
         let disparoId;
 
+
         function moverDisparo() {
             cuadrados[disparoIndiceActual].classList.remove("laser_enemigo");
 
             // Verificar si el disparo está dentro de los límites del juego
             if (disparoIndiceActual + width < width * width) {
                 disparoIndiceActual += width;
-                cuadrados[disparoIndiceActual].classList.add("laser_enemigo");
+                cuadrados[disparoIndiceActual].classList.add("laser_enemigo");     
 
                 // Si el disparo alcanza la nave del jugador
                 if (cuadrados[disparoIndiceActual].classList.contains("nave")) {
@@ -264,6 +266,7 @@ function disparoInvasor() {
                     imagenGameOver.classList.add('derrota');
                     volver.classList.remove("volver");
                     volver.classList.add("boton");
+                    
                 }
             } else {
                 // Eliminar el intervalo si el disparo sale del área del juego
@@ -271,8 +274,13 @@ function disparoInvasor() {
             }
         }
 
+         // Crear un nuevo elemento de audio para el sonido del disparo enemigo
+        const nuevoAudio = new Audio(laserEnemigoAudio.src);
+        nuevoAudio.play();
         // Iniciar el intervalo de disparo
         disparoId = setInterval(moverDisparo, 100);
+        
+        
     }
 }
 
