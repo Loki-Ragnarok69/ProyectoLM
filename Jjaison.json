@@ -1,0 +1,10 @@
+{
+    "modos":[
+        {
+            "velocidad":600
+        },
+        {
+            "velocidad": 400
+        }
+    ]
+}
