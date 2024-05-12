@@ -328,7 +328,10 @@ function siguienteNivel() {
     // Incrementar el nivel
     let nivelActual = modos["niveles"].findIndex(nivel => nivel.velocidad === velNiv);
 
-    
+    //ocultar la imagen de has ganado
+    const imagenWinner = document.getElementById('ganaste');
+    imagenWinner.classList.add('oculto');
+
     // Si alcanzas el segundo nivel, oculta el botón de siguiente nivel
     if (nivelActual === 2) {
         siguiente.classList.add('siguiente_oculto');
@@ -338,8 +341,6 @@ function siguienteNivel() {
     nivelActual++; // Incrementamos al siguiente nivel
 
     velNiv = modos["niveles"][nivelActual]["velocidad"];
-
-    
 
     /* Reiniciar el juego */
     reiniciarJuego();
@@ -397,5 +398,3 @@ function reiniciarJuego() {
     }
 }
 siguiente.addEventListener('click', siguienteNivel);
-
-
