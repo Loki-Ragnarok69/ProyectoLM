@@ -50,6 +50,7 @@ siguiente.classList.add("siguiente_oculto");
 
 /* Disminuye el volumen de la explosion */
 explosionAudio.volume = 0.3;
+laserEnemigoAudio.volume = 0.3;
 
 /* Creamos un for para añadir divs dentro de la caja donde estos se moveran */
 for (let i = 0; i < width * width; i++) {
@@ -168,6 +169,11 @@ function moverInvasores() {
         siguiente.classList.add("boton");
         siguiente.classList.remove("siguiente_oculto");
         puntuacionActual = resultado;
+
+        /* Añadimos pantalla de victoria */
+        const imagenWinner = document.getElementById('ganaste');
+        imagenWinner.classList.remove('oculto');
+        imagenWinner.classList.add('victoria');
     }
 }
 

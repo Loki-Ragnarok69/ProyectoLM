@@ -157,3 +157,10 @@ button:hover {
 .siguiente_oculto {
   display: none;
 }
+
+.victoria {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  z-index: 1;
+}
