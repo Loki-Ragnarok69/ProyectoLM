@@ -36,6 +36,9 @@ let juegoFinalizado = false;
 /* Llevar el control del disparo */
 let disparoActivo = false;
 
+/* Para que desaparezca el boton */
+let nivelActualBoton=0;
+
 /* Sonidos de laser, explosion, game over y victoria */
 const laserAudio = document.getElementById("laser");
 const explosionAudio = document.getElementById("explosion");
@@ -168,6 +171,9 @@ function moverInvasores() {
         siguiente.classList.remove("volver");
         siguiente.classList.add("boton");
         siguiente.classList.remove("siguiente_oculto");
+        if(nivelActualBoton===1){
+            siguiente.classList.add("siguiente_oculto");
+        }
         puntuacionActual = resultado;
 
         /* Añadimos pantalla de victoria */
@@ -339,6 +345,8 @@ function siguienteNivel() {
 
 
     nivelActual++; // Incrementamos al siguiente nivel
+
+    nivelActualBoton++;
 
     velNiv = modos["niveles"][nivelActual]["velocidad"];
 
