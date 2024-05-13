@@ -171,6 +171,8 @@ function moverInvasores() {
         siguiente.classList.remove("volver");
         siguiente.classList.add("boton");
         siguiente.classList.remove("siguiente_oculto");
+
+        //Comprobamos si hemos pasado de nivel y si es asi ocultanmos el boton de siguiente nivel
         if(nivelActualBoton===1){
             siguiente.classList.add("siguiente_oculto");
         }
@@ -346,7 +348,7 @@ function siguienteNivel() {
 
     nivelActual++; // Incrementamos al siguiente nivel
 
-    nivelActualBoton++;
+    nivelActualBoton++; //Incrementamos la varibale global para ocultar el boton
 
     velNiv = modos["niveles"][nivelActual]["velocidad"];
 
