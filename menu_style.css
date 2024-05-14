@@ -33,12 +33,12 @@ button:hover {
     background-color: #0056b3;
 }
 
-.input{
+.input {
     background-color: black;
     color: yellow;
     font-family: 'Press Start 2P';
     height: 20px;
     width: auto;
-    border-radius:5px;
+    border-radius: 5px;
     border: solid 2px white;
 }

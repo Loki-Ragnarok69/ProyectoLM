@@ -122,7 +122,8 @@ h1 {
 .volver {
   display: none;
 }
-.boton{
+
+.boton {
   width: 150px;
   height: 50px;
   position: absolute;

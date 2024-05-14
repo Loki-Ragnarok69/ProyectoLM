@@ -37,7 +37,7 @@ let juegoFinalizado = false;
 let disparoActivo = false;
 
 /* Para que desaparezca el boton */
-let nivelActualBoton=0;
+let nivelActualBoton = 0;
 
 /* Sonidos de laser, explosion, game over y victoria */
 const laserAudio = document.getElementById("laser");
@@ -167,13 +167,13 @@ function moverInvasores() {
         juegoFinalizado = true;
         clearInterval(invasoresIndice);
         victoria_audio.play();
-        
+
         siguiente.classList.remove("volver");
         siguiente.classList.add("boton");
         siguiente.classList.remove("siguiente_oculto");
 
         //Comprobamos si hemos pasado de nivel y si es asi ocultanmos el boton de siguiente nivel
-        if(nivelActualBoton===1){
+        if (nivelActualBoton === 1) {
             siguiente.classList.add("siguiente_oculto");
         }
         puntuacionActual = resultado;
@@ -259,7 +259,7 @@ function disparoInvasor() {
             // Verificar si el disparo está dentro de los límites del juego
             if (disparoIndiceActual + width < width * width) {
                 disparoIndiceActual += width;
-                cuadrados[disparoIndiceActual].classList.add("laser_enemigo");     
+                cuadrados[disparoIndiceActual].classList.add("laser_enemigo");
 
                 // Si el disparo alcanza la nave del jugador
                 if (cuadrados[disparoIndiceActual].classList.contains("nave")) {
@@ -280,7 +280,7 @@ function disparoInvasor() {
                     imagenGameOver.classList.add('derrota');
                     volver.classList.remove("volver");
                     volver.classList.add("boton");
-                    
+
                 }
             } else {
                 // Eliminar el intervalo si el disparo sale del área del juego
@@ -288,13 +288,13 @@ function disparoInvasor() {
             }
         }
 
-         // Crear un nuevo elemento de audio para el sonido del disparo enemigo
+        // Crear un nuevo elemento de audio para el sonido del disparo enemigo
         const nuevoAudio = new Audio(laserEnemigoAudio.src);
         nuevoAudio.play();
         // Iniciar el intervalo de disparo
         disparoId = setInterval(moverDisparo, 100);
-        
-        
+
+
     }
 }
 
@@ -357,7 +357,7 @@ function siguienteNivel() {
 
     game_over_audio.pause(); // Para pausar la reproducción
     game_over_audio.currentTime = 0; // Para reiniciar el tiempo de reproducción
-    
+
     victoria_audio.pause(); // Para pausar la reproducción
     victoria_audio.currentTime = 0; // Para reiniciar el tiempo de reproducción
 }
