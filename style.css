@@ -28,16 +28,6 @@ body {
   width: 300px;
 }
 
-/* Por si queremos poner la puntuacion justo en el medio */
-
-/* .resultado{                      
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    display: flex;
-  flex-wrap: wrap;
-} */
-
 .caja {
   background-image: url(imagenes/fondo.gif);
   width: 600px;
